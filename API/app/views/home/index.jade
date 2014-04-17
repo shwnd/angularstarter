@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 I'm using generator-express MVC!
+  
+  if (!everyauth.loggedIn)
+    h2 Not Authenticated
+    #google-login
+      a(href='/auth/google', style='border: 0px') Login with google
+      img(style='border: 0px', src='https://www.google.com/favicon.ico')
+  else
+    h2 Authenticated
+    if (everyauth.google)
+      h3 Google User Data
+      p= JSON.stringify(everyauth.google.user)
+
+  h3
+    a(href='/logout') Logout
